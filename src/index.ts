@@ -120,6 +120,28 @@ app.put("/accounts/:id", (req: Request, res: Response) => {
             }
         }
 
+        //Exercício de fixacao
+        // req.body.id (newId)
+        // string que inicia com a letra ‘a’
+        if (newId !== undefined) {
+            if (newId[0] !== "a") {
+                res.status(400)
+                throw new Error("'id' inválido. Deve iniciar com letra 'a'");
+            }
+        }
+        //Exercício de fixacao
+        // req.body.ownerName (newOwnerName)
+        // string com no mínimo 2 caracteres
+        if (newOwnerName !== undefined) {
+            if (typeof newOwnerName !== 'string') {
+                throw new Error("'ownerName' deve ser uma string")
+            }
+            if (newOwnerName.length < 2) {
+                throw new Error("'ownerName' deve ser possuir no mínimo 2 caracteres");
+            }
+        }
+
+
         const account = accounts.find((account) => account.id === id)
 
         if (account) {
